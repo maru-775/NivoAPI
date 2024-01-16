@@ -20,17 +20,17 @@ CSV.open("administrations_domaine_culture.csv", "w") do |csv|
       if administration['mission'] && code_postal
         email = administration['adresse_courriel']
         nom = administration['nom']
-        site = administration['site_internet']
         mission_words = administration['mission'].downcase.split(/\W+/)
         matching_keywords_mission = mission_words.select { |word| key_words.include?(word) }
         if email
           email_words = email.downcase.split(/\W+/)
           matching_keywords_email = email_words.select { |word| key_words.include?(word) }
           if !matching_keywords_email.empty? || !matching_keywords_mission.empty?
-            csv << [nom, email, code_postal['code_postal'], site, administration['mission']]
+            csv << [nom, email, code_postal['code_postal'], administration['mission']]
           end
         end
       end
     end
   end
+  puts "CSV created !"
 end
