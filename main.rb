@@ -13,13 +13,18 @@ data.each do |administration|
     end
     # puts code_postal if code_postal
     if administration['mission'] && code_postal
+      email = administration['adresse_courriel']
       mission_words = administration['mission'].downcase.split(/\W+/)
-      matching_keywords = mission_words.select { |word| key_words.include?(word) }
-
-      if !matching_keywords.empty?
-        puts administration['mission']
-        puts code_postal['code_postal']
-        puts "- - - - - - - - - -"
+      matching_keywords_mission = mission_words.select { |word| key_words.include?(word) }
+      if email
+        email_words = email.downcase.split(/\W+/)
+        matching_keywords_email = email_words.select { |word| key_words.include?(word) }
+        if !matching_keywords_email.empty?
+          puts email
+          # puts administration['mission']
+          # puts code_postal['code_postal']
+          # puts "- - - - - - - - - -"
+        end
       end
     end
   end
