@@ -19,11 +19,10 @@ data.each do |administration|
       if email
         email_words = email.downcase.split(/\W+/)
         matching_keywords_email = email_words.select { |word| key_words.include?(word) }
-        if !matching_keywords_email.empty?
-          puts email
-          # puts administration['mission']
-          # puts code_postal['code_postal']
-          # puts "- - - - - - - - - -"
+        if !matching_keywords_email.empty? || !matching_keywords_mission.empty?
+          puts "#{email} : #{code_postal['code_postal']}"
+          puts administration['mission']
+          puts "- - - - - - - - - -"
         end
       end
     end
