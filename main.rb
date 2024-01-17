@@ -9,7 +9,7 @@ CSV.open("administrations_domaine_culture.csv", "w") do |csv|
   json_data = File.read(file_path)
   data = JSON.parse(json_data)
   departments = ['16', '24', '33', '31', '32', '64', '65', '79', '86']
-  key_words = ['culture', 'culturelle', 'culturel', 'art', 'communication', 'arts', 'bibliothèque', 'bibliothèques', 'olympique', 'olympiques', 'sport', 'sports', 'sportif', 'sportive']
+  key_words = ['culture', 'culturelle', 'culturel', 'art', 'communication', 'communications', 'arts', 'bibliothèque', 'bibliothèques', 'olympique', 'olympiques', 'sport', 'sports', 'sportif', 'sportive']
   data.each do |administration|
     if administration['adresse']
       address_array = JSON.parse(administration['adresse'])
